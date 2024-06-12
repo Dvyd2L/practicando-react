@@ -1,0 +1,50 @@
+form {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas:
+    "labelNombre labelNombre inputNombre inputNombre inputNombre"
+    "labelApellido labelApellido inputApellido inputApellido inputApellido"
+    "labelDni labelDni inputDni inputDni inputDni"
+    ". . submit . .";
+
+  & > div {
+    display: contents;
+
+    & > label {
+      background-color: darkslateblue;
+      border-radius: 2px;
+    }
+
+    &:nth-of-type(1) {
+      & > label {
+        grid-area: labelNombre;
+      }
+      & > input {
+        grid-area: inputNombre;
+      }
+    }
+
+    &:nth-of-type(2) {
+      & > label {
+        grid-area: labelApellido;
+      }
+      & > input {
+        grid-area: inputApellido;
+      }
+    }
+
+    &:nth-of-type(3) {
+      & > label {
+        grid-area: labelDni;
+      }
+      & > input {
+        grid-area: inputDni;
+      }
+    }
+  }
+
+  & > button {
+    grid-area: submit;
+  }
+}

@@ -1,0 +1,15 @@
+#root {
+  max-width: 100dvw;
+  height: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
