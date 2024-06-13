@@ -1,51 +1,36 @@
-import { useState } from "react";
-import { IUser } from "../models/user";
+import { useUser } from "../hooks/useUser.ts";
+import type { IUser } from "../models/user.d.ts";
 import "./UserForm.tsx.css";
 
 const UserForm = ({
   user,
-  onSubmit,
+  handleSubmit,
 }: {
   user?: IUser;
-  onSubmit: (user: IUser) => Promise<Response>;
+  handleSubmit: (user: IUser) => Promise<void>;
 }) => {
-  // Define estados para los valores del formulario
-  const [id] = useState(user?.id ?? 0);
-  const [nombre, setNombre] = useState(user?.nombre ?? "");
-  const [apellido, setApellido] = useState(user?.apellido ?? "");
-  const [dni, setDni] = useState(user?.dni ?? "");
-
-  // Función para manejar el envío del formulario
-  const handleSubmit = async (event: Event) => {
-    event.preventDefault();
-    const newUser: IUser = { id, nombre, apellido, dni };
-
-    try {
-      const response = await onSubmit(newUser);
-
-      if (!response.ok)
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-
-      alert("Usuario creado/editado correctamente"); // TODO: cambiar por un toast o similar
-      setNombre("");
-      setApellido("");
-      setDni("");
-    } catch (error) {
-      console.error({ error });
-      error instanceof Error &&
-        alert(`Error al crear/editar el usuario: ${error.message}`); // TODO: cambiar por un toast o similar
-    }
-  };
+  const {
+    user: usuario,
+    setNombre,
+    setApellido,
+    setDni,
+    setUser,
+  } = useUser(user);
 
   return (
-    <form onSubmit={async (e) => await handleSubmit(e.nativeEvent)}>
+    <form
+      onSubmit={async () => {
+        await handleSubmit(usuario);
+        setUser();
+      }}
+    >
       <div>
         <label htmlFor="nombre">Nombre</label>
         <input
           type="text"
           name="nombre"
           id="nombre"
-          value={nombre}
+          value={usuario.nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
       </div>
@@ -56,7 +41,7 @@ const UserForm = ({
           type="text"
           name="apellido"
           id="apellido"
-          value={apellido}
+          value={usuario.apellido}
           onChange={(e) => setApellido(e.target.value)}
         />
       </div>
@@ -67,7 +52,7 @@ const UserForm = ({
           type="text"
           name="dni"
           id="dni"
-          value={dni}
+          value={usuario.dni}
           onChange={(e) => setDni(e.target.value)}
         />
       </div>
