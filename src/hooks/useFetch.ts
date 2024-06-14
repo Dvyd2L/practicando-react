@@ -5,13 +5,13 @@ export const useFetch = <T>(url: string, reqInit?: RequestInit) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
   const [controller, setController] = useState<AbortController>();
-  
+
   const fetchApi = useCallback(async () => {
     const abortController = new AbortController();
 
     setLoading(true);
     setError(undefined); // Borrar errores al comienzo de una petición
-    setController(abortController)
+    setController(abortController);
 
     try {
       const res = await fetch(url, {
@@ -32,8 +32,15 @@ export const useFetch = <T>(url: string, reqInit?: RequestInit) => {
 
   useEffect(() => {
     fetchApi();
-    return controller?.abort;
-  }, [url, reqInit, fetchApi, controller?.abort]);
+    return () => controller?.abort();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, reqInit, fetchApi, controller?.abort]); // no añadir controller a las dependencias para evitar bucle de renderizados
 
-  return { data, loading, error, fetchApi, handleCancelRequest: controller?.abort };
+  return {
+    data,
+    loading,
+    error,
+    fetchApi,
+    handleCancelRequest: controller?.abort,
+  };
 };

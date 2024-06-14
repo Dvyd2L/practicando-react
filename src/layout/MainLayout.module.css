@@ -1,0 +1,15 @@
+.layout {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}

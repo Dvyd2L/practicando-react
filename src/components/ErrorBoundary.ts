@@ -31,5 +31,4 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return this.state.hasError ? this.props.fallback : this.props.children;
   }
 }
-
 export default ErrorBoundary;

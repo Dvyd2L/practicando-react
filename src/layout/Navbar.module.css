@@ -1,0 +1,15 @@
+header {
+  padding-inline: 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+  align-items: center;
+}

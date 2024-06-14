@@ -1,5 +1,4 @@
-import "./DataGrid.tsx.css";
-
+import "./DataGrid.module.css";
 interface IIDentificable<T> {
   id: T;
 }
@@ -11,7 +10,6 @@ interface DataGridProps<T> {
   data: T[];
   handlers?: IHandlers;
 }
-
 const DataGrid = <T extends IIDentificable<number>>({
   data,
   handlers,

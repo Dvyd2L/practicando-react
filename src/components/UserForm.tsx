@@ -1,7 +1,6 @@
 import { useUser } from "../hooks/useUser.ts";
 import type { IUser } from "../models/user.d.ts";
-import "./UserForm.tsx.css";
-
+import "./UserForm.module.css";
 const UserForm = ({
   user,
   handleSubmit,

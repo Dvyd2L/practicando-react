@@ -3,13 +3,11 @@ enum SuspenderStates {
   success = "success",
   error = "error",
 }
-
 interface SuspenderResult<T> {
   state: SuspenderStates;
   value?: T;
   error?: Error;
 }
-
 const getSuspender = <T>(promise: Promise<T>) => {
   const result: SuspenderResult<T> = { state: SuspenderStates.pending };
   const suspender = promise.then(
@@ -34,10 +32,9 @@ const getSuspender = <T>(promise: Promise<T>) => {
   };
   return { read };
 };
-
-export const fetchData = <T>(url: string | URL) => {
+export const fetchData = <T>(url: string | URL, requestInit?: RequestInit) => {
   if (!(url instanceof URL)) url = new URL(url);
-  const data = fetch(url.href)
+  const data = fetch(url.href, requestInit)
     .then((res) => res.ok && res.json())
     .catch(console.error);
   return getSuspender<T>(data);
