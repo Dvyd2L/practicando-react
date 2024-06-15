@@ -1,14 +1,32 @@
-import MainLayout from "@layout/MainLayout.tsx";
-import { lazy } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ErrorComponent from "@/common/components/Error";
+import ErrorBoundary from "@/common/components/ErrorBoundary";
+import Loading from "@/common/components/Loading";
+import MainLayout from "@/common/layout/MainLayout.tsx";
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.module.css";
 const App = () => (
   <BrowserRouter>
-    <Routes>
-      <Route path="*" element={<MainLayout />} />
-      <Route path="/login" Component={lazy(() => import("@pages/Login.tsx"))} />
-      <Route path="/access-denied" element={<h1>Acceso Denegado</h1>} />
-    </Routes>
+    <ErrorBoundary fallback={<ErrorComponent />}>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route
+            path="/auth/*"
+            Component={lazy(() => import("@/auth/pages/Auth.tsx"))}
+          />
+          <Route
+            path="/access-denied"
+            Component={lazy(() => import("@/common/pages/AccessDenied.tsx"))}
+          />
+          <Route
+            path="/404"
+            Component={lazy(() => import("@/common/pages/NotFound.tsx"))}
+          />
+          <Route path="/" element={<Navigate to="/inicio" />} />
+          <Route path="/*" element={<MainLayout />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   </BrowserRouter>
 );
 export default App;

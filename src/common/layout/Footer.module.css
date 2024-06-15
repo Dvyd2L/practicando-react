@@ -1,0 +1,17 @@
+@layer components {
+  @layer footer {
+    footer {
+      padding: 2rem;
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 0.5rem;
+      justify-content: space-evenly;
+      align-items: center;
+      & > address {
+        display: inline-flex;
+        gap: 1rem;
+        flex-flow: row wrap;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
+import type { IUser } from "@/users/models/user";
 import { useCallback, useEffect, useState } from "react";
-import { IUser } from "../models/user";
 
 export const useUser = (initialUser?: IUser) => {
   const [id, setId] = useState(initialUser?.id ?? 0);

@@ -1,24 +1,23 @@
 import { lazy } from "react";
-
-export const appRoutes = [
+import { RouteObject } from "react-router-dom";
+export const appRoutes: RouteObject[] = [
   {
-    path: "/",
-    name: "Home",
-    Component: lazy(() => import("@pages/Home.tsx")),
+    path: "inicio",
+    Component: lazy(() => import("@/pages/Home.tsx")),
   },
   {
-    path: "/posts",
-    name: "Posts",
-    Component: () => (<h1>Posts</h1>),
+    path: "posts",
+    
+    Component: lazy(() => import("@/posts/pages/Posts")),
+    children: [
+      {
+        path: ":postId",
+        Component: lazy(() => import("@/posts/pages/PostDetail")),
+      },
+    ],
   },
   {
-    path: "/contacto",
-    name: "Contacto",
-    Component: () => <h1>Contacto</h1>,
-  },
-  {
-    path: "/admin",
-    name: "Administración",
-    Component: lazy(() => import("@pages/Admin.tsx")),
-  },
-] as const
+    path: "admin",
+    Component: lazy(() => import("@/pages/Admin.tsx")),
+  }
+] as const;

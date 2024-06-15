@@ -1,7 +1,5 @@
+import { IIDentificable } from "@/common/interfaces/identificable";
 import "./DataGrid.module.css";
-interface IIDentificable<T> {
-  id: T;
-}
 interface IHandlers {
   update?: (id?: number) => void;
   delete?: (id?: number) => void;
@@ -18,7 +16,7 @@ const DataGrid = <T extends IIDentificable<number>>({
     <thead>
       <tr>
         {data?.[0] &&
-          Object.keys(data[0]).map((key, idx) => <th key={idx}>{key}</th>)}
+          Object.keys(data[0]).map((key, idx) => <th key={idx} scope="col">{key}</th>)}
         <th key={crypto.randomUUID()}></th>
       </tr>
     </thead>

@@ -2,18 +2,18 @@ import { Suspense, lazy } from "react";
 import "./Home.module.css";
 
 // Components
-import ErrorComponent from "@components/Error.tsx";
-import ErrorBoundary from "@components/ErrorBoundary.ts";
-import Loading from "@components/Loading.tsx";
+import ErrorComponent from "@/common/components/Error";
+import ErrorBoundary from "@/common/components/ErrorBoundary";
+import Loading from "@/common/components/Loading";
 
 // Custom hooks & helpers
-import { useDialogRefs } from "@hooks/useDialogRefs.ts";
-import { useFetch } from "@hooks/useFetch.ts";
-import type { IUser } from "@models/user.d.ts";
+import { useDialogRefs } from "@/common/hooks/useDialogRefs";
+import { useFetch } from "@/common/hooks/useFetch";
+import type { IUser } from "@/users/models/user";
 
 // Lazy loaded components
-const UserForm = lazy(() => import("@components/UserForm.tsx"));
-const DataGrid = lazy(() => import("@components/DataGrid.tsx"));
+const UserForm = lazy(() => import("@/users/components/UserForm.tsx"));
+const DataGrid = lazy(() => import("@/common/components/DataGrid"));
 
 const USERS_API_URL = "http://localhost:8080/api/users";
 //const { read: getUsers } = fetchData<IUser[]>(USERS_API_URL);
@@ -43,15 +43,15 @@ const Home = () => {
       <h1>Prueba Java+Maven & React</h1>
 
       {/* Suspense + Error Boundary Components for Lazy load components */}
-      <ErrorBoundary fallback={<ErrorComponent />}>
-        <Suspense fallback={<Loading handleClick={handleCancelRequest} />}>
+      {/* <ErrorBoundary fallback={<ErrorComponent />}>
+        <Suspense fallback={<Loading />}> */}
           <UserForm
             handleSubmit={(user: IUser) =>
               handleSubmit({ user, url: USERS_API_URL, method: "POST" })
             }
           />
-        </Suspense>
-      </ErrorBoundary>
+        {/* </Suspense>
+      </ErrorBoundary> */}
 
       <ErrorBoundary fallback={<ErrorComponent />}>
         <Suspense fallback={<Loading handleClick={handleCancelRequest} />}>

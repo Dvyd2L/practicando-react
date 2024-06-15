@@ -26,16 +26,20 @@ const getSuspender = <T>(promise: Promise<T>) => {
         throw suspender;
       case result.state === SuspenderStates.error:
         throw result.error;
-      default:
-        return result.value;
+        case result.state === SuspenderStates.success:
+          return result.value;
+        default:
+          throw new Error("Unhandled state");
     }
   };
   return { read };
 };
-export const fetchData = <T>(url: string | URL, requestInit?: RequestInit) => {
+export const fetchSuspender = <T>(url: string | URL, requestInit?: RequestInit) => {
   if (!(url instanceof URL)) url = new URL(url);
   const data = fetch(url.href, requestInit)
-    .then((res) => res.ok && res.json())
-    .catch(console.error);
+    .then((res) => {
+      if (!res.ok) throw new Error(res.statusText);
+      return res.json();
+    });
   return getSuspender<T>(data);
 };

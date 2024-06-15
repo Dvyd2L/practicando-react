@@ -1,0 +1,15 @@
+@layer pages {
+  @layer posts {
+    ul {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      & > li {
+        padding: .5rem;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
