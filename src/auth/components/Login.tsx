@@ -3,7 +3,16 @@ const Login = () => {
   return (
     <>
       <h1>Iniciar sesión</h1>
-      <form>
+      <form
+        onSubmit={(ev) => {
+          ev.preventDefault();
+          const data = new FormData(ev.currentTarget);
+          const username = data.get("username");
+          const password = data.get("password");
+          localStorage.setItem("user", JSON.stringify({ username, password }));
+          window.location.href = "/";
+        }}
+      >
         <div>
           <label htmlFor="usuario">Usuario</label>
           <input

@@ -1,6 +1,6 @@
 @layer components {
   @layer user-form {
-    form {
+    .user-form {
       text-align: center;
       display: grid;
       gap: 0.5rem;

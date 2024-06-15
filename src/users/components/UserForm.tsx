@@ -4,7 +4,7 @@ import Loading from "@/common/components/Loading.tsx";
 import { useUser } from "@/users/hooks/useUser.ts";
 import type { IUser } from "@/users/models/user.js";
 import { Suspense } from "react";
-import "./UserForm.module.css";
+import styles from "./UserForm.module.css";
 const UserForm = ({
   user,
   handleSubmit,
@@ -23,7 +23,7 @@ const UserForm = ({
   return (
     <ErrorBoundary fallback={<ErrorComponent />}>
       <Suspense fallback={<Loading />}>
-        <form
+        <form className={styles["user-form"]}
           onSubmit={async () => {
             await handleSubmit(usuario);
             setUser();

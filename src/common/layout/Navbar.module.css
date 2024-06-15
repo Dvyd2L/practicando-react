@@ -1,6 +1,6 @@
 @layer components {
   @layer navbar {
-    header {
+    .navbar-header {
       padding: 1rem 2rem;
       display: flex;
       flex-flow: row nowrap;
@@ -8,7 +8,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav {
+    .navbar-nav {
       display: flex;
       flex-flow: row nowrap;
       gap: 2rem;
@@ -16,6 +16,53 @@
       & > a {
         text-transform: capitalize;
       }
+    }
+    .navbar-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .navbar-collapse {
+      overflow: hidden;
+      transition: display 0.3s ease;
+      display: none;
+    }
+    .navbar-collapse.open {
+      display: inline-flex;
+      gap: 2rem;
+      flex-flow: row nowrap;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+    .input {
+      min-height: 50px;
+      max-width: 150px;
+      padding: 0 1rem;
+      font-size: 15px;
+      border: 1px solid var(--primary-color);
+      border-radius: 6px 0 0 6px;
+      background-color: transparent;
+    }
+    .button--submit {
+      min-height: 50px;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      background-color: var(--primary-color);
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .button--submit:hover {
+      background-color: #5e5dcd;
+    }
+    .input:focus,
+    .input:focus-visible {
+      border-color: #3898ec;
+      outline: none;
     }
   }
 }

@@ -5,9 +5,7 @@ const Footer: React.FC<{ children?: React.ReactNode }> & {
 } = ({ children }) => <footer>{children}</footer>;
 const Copyright: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <>
-    {children ? (
-      children
-    ) : (
+    {children ?? (
       <span>
         &copy; {new Date().getFullYear()} Todos los derechos reservados. También
         los izquierdos.
