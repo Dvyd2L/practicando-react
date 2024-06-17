@@ -17,12 +17,11 @@ const DataGrid = lazy(() => import("@/app/common/components/DataGrid"));
 
 const USERS_API_URL = "http://localhost:8080/api/users";
 //const { read: getUsers } = fetchData<IUser[]>(USERS_API_URL);
-const handleSubmit = async (
-  options: {
-    user?: IUser;
-    url: string;
-    method?: "GET" | "POST" | "PUT" | "DELETE";
-  }) => {
+const handleSubmit = async (options: {
+  user?: IUser;
+  url: string;
+  method?: "GET" | "POST" | "PUT" | "DELETE";
+}) => {
   const { url, method, user } = options;
   await fetch(url, {
     method,
@@ -30,8 +29,7 @@ const handleSubmit = async (
       "Content-Type": "application/json",
     },
     body: user ? JSON.stringify(user) : null,
-  })
-    .catch(console.error);
+  }).catch(console.error);
 };
 const UsersPage = () => {
   const { getDialog, setDialog } = useDialogRefs();
@@ -42,20 +40,18 @@ const UsersPage = () => {
     <>
       <h1>Prueba Java+Maven & React</h1>
 
-      {/* Suspense + Error Boundary Components for Lazy load components */}
-      {/* <ErrorBoundary fallback={<ErrorComponent />}>
-        <Suspense fallback={<Loading />}> */}
+      <ErrorBoundary fallback={<ErrorComponent />}>
+        <Suspense fallback={<Loading />}>
           <UserForm
             handleSubmit={(user: IUser) =>
               handleSubmit({ user, url: USERS_API_URL, method: "POST" })
             }
           />
-        {/* </Suspense>
-      </ErrorBoundary> */}
+        </Suspense>
+      </ErrorBoundary>
 
       <ErrorBoundary fallback={<ErrorComponent />}>
         <Suspense fallback={<Loading handleClick={handleCancelRequest} />}>
-          {/* Custom Hook */}
           {loading && <Loading handleClick={handleCancelRequest} />}
           {error && <ErrorComponent />}
           {!loading && !error && data && (
