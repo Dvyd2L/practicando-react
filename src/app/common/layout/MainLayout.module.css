@@ -1,5 +1,5 @@
 @layer layouts {
-  @layer main {
+  @layer common {
     .layout {
       max-width: 100dvw;
       height: 100dvh;

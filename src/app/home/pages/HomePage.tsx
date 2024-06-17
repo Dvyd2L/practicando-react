@@ -1,10 +1,11 @@
 import HomeLayout from "@/app/home/layout/HomeLayout.tsx";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <HomeLayout>
       <h1>Home Page</h1>
-      <p>lorem</p>
+      <Link to="/users">Entrar</Link>
     </HomeLayout>
   );
 };
