@@ -17,7 +17,7 @@ const Posts = lazy(() => import("@/app/posts/pages/Posts.tsx"));
 const PostDetail = lazy(() => import("@/app/posts/pages/PostDetail.tsx"));
 const AdminPage = lazy(() => import("@/app/admin/AdminPage.tsx"));
 
-export const AppRouter = () => (
+const AppRouter = () => (
   <BrowserRouter>
     <ErrorBoundary fallback={<ErrorComponent />}>
       <Suspense fallback={<Loading />}>
@@ -51,3 +51,4 @@ export const AppRouter = () => (
     </ErrorBoundary>
   </BrowserRouter>
 );
+export default AppRouter;
