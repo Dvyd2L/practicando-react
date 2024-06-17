@@ -2,8 +2,8 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // components
 import ErrorComponent from "@/app/common/components/Error.tsx";
-import ErrorBoundary from "@/app/common/components/ErrorBoundary.ts";
 import Loading from "@/app/common/components/Loading.tsx";
+import ErrorBoundary from "@/app/core/components/ErrorBoundary";
 
 const MainLayout = lazy(() => import("@/app/common/layout/MainLayout.tsx"));
 const AccessDenied = lazy(() => import("@/app/common/pages/AccessDenied.tsx"));

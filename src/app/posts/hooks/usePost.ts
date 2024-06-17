@@ -1,5 +1,5 @@
-import { useFetch } from "@/app/common/hooks/useFetch";
-import { fetchSuspender } from "@/app/common/services/fetch-suspender";
+import { useFetch } from "@/app/core/hooks/useFetch";
+import { fetchSuspender } from "@/app/core/services/fetch-suspender";
 import { IPost } from "@/app/posts/models/post";
 import { useParams } from "react-router-dom";
 export const POSTS_URL = "https://jsonplaceholder.typicode.com/posts/";

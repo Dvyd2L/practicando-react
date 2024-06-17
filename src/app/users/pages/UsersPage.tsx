@@ -3,12 +3,12 @@ import "./UsersPage.module.css";
 
 // Components
 import ErrorComponent from "@/app/common/components/Error";
-import ErrorBoundary from "@/app/common/components/ErrorBoundary";
 import Loading from "@/app/common/components/Loading";
+import ErrorBoundary from "@/app/core/components/ErrorBoundary";
 
 // Custom hooks & helpers
 import { useDialogRefs } from "@/app/common/hooks/useDialogRefs";
-import { useFetch } from "@/app/common/hooks/useFetch";
+import { useFetch } from "@/app/core/hooks/useFetch";
 import type { IUser } from "@/app/users/models/user";
 
 // Lazy loaded components

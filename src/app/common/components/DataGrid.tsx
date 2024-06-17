@@ -1,4 +1,4 @@
-import { IIDentificable } from "@/app/common/interfaces/identificable";
+import { IIDentificable } from "@/app/core/interfaces/identificable";
 import "./DataGrid.module.css";
 interface IHandlers {
   update?: (id?: number) => void;
