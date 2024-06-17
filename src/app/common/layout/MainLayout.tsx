@@ -6,6 +6,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import ErrorBoundary from "../../core/components/ErrorBoundary";
 import ErrorComponent from "../components/Error";
 import Loading from "../components/Loading";
+import { navLinks } from "../nav-links.routes";
 import "./MainLayout.module.css";
 import styles from "./MainLayout.module.css";
 const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
@@ -24,15 +25,11 @@ const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
           <Navbar.Toggle toggleFn={toggleCollapse} />
           <Navbar.Collapse isOpen={isOpen}>
             <Navbar.Nav>
-              <NavLink to="users">Usuarios</NavLink>
-              <NavLink to="posts">Posts</NavLink>
-              <NavLink to="admin">Administración</NavLink>
-              {/* {appRoutes &&
-                appRoutes.map(({ path }, index) => (
-                  <NavLink key={index} to={path ?? ""}>
-                    {path}
-                  </NavLink>
-                ))} */}
+              {navLinks.map(({ id, path }) => (
+                <NavLink key={id} to={path ?? ""}>
+                  {id}
+                </NavLink>
+              ))}
             </Navbar.Nav>
             <Navbar.SearchBar />
           </Navbar.Collapse>
