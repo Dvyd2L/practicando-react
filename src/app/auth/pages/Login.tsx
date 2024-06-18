@@ -1,3 +1,4 @@
+import Btn from "@/app/common/components/Btn";
 import "./Login.module.css";
 const Login = () => {
   return (
@@ -31,7 +32,7 @@ const Login = () => {
             id="password"
           />
         </div>
-        <button>Iniciar sesión</button>
+        <Btn>Iniciar sesión</Btn>
       </form>
     </>
   );
