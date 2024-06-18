@@ -23,5 +23,6 @@ export const createContextFactory = <T,>(propsProvider: () => T) => {
     );
   };
 
-  return { GenericProvider, useGenericContext };
+  // return { GenericProvider, useGenericContext };
+  return [GenericProvider, useGenericContext] as const;
 };

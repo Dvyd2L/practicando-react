@@ -3,32 +3,24 @@ import type {
   ToastContentProps,
   ToastIconProps,
   ToastProps,
-} from "@/app/common/toasts/interfaces/toast";
-import { useEffect, useRef } from "react";
+} from "@/app/common/toasts/models/interfaces/toast";
 
-import { useToastContext } from "../contexts/ToastContext";
+import { TOAST_TIMEOUT } from "../models/constants/toast.const";
 import styles from "./Toast.module.css";
 
 const Toast: React.FC<ToastProps<string>> & {
   Icon: React.FC<ToastIconProps>;
   Content: React.FC<ToastContentProps>;
   Close: React.FC<ToastCloseProps>;
-} = ({ id, children, type }) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const { addToast } = useToastContext();
-
-  useEffect(() => {
-    if (dialogRef.current) {
-      addToast({ id, type, title: "", message: "" });
-    }
-  }, [id, type, addToast]);
-
-  return (
-    <dialog className={styles.toast} toast-type={type}>
-      {children}
-    </dialog>
-  );
-};
+} = ({ children, type }) => (
+  <dialog
+    className={styles.toast}
+    toast-type={type}
+    style={{ "--toast-life": `${TOAST_TIMEOUT}ms` } as React.CSSProperties}
+  >
+    {children}
+  </dialog>
+);
 
 const Icon: React.FC<ToastIconProps> = ({ children, source }) => (
   <>

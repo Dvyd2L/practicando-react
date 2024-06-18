@@ -58,7 +58,7 @@ h1 {
 
 p {
   text-wrap: pretty;
-  &::first-letter{
+  &::first-letter {
     text-transform: uppercase;
   }
 }

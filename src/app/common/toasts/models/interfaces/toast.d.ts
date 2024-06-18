@@ -1,14 +1,15 @@
 import { IIDentificable } from "@/app/core/interfaces/identificable";
+import { TOAST_TYPES } from "../enums/toasts-types";
 
 export interface IToast<T> extends IIDentificable<T> {
-  //id: T;
-  type: string;
+  type: TOAST_TYPES;
   title: string;
   message: string;
+  icon?: string;
 }
 
 export interface ToastProps<T> extends IIDentificable<T> {
-  type: string;
+  type: TOAST_TYPES;
   children: React.ReactNode;
 }
 
