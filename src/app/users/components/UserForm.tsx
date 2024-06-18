@@ -1,3 +1,4 @@
+import Btn from "@/app/common/components/Btn";
 import { useUser } from "@/app/users/hooks/useUser.ts";
 import type { IUser } from "@/app/users/models/user.js";
 import styles from "./UserForm.module.css";
@@ -57,7 +58,7 @@ const UserForm = ({
         />
       </div>
 
-      <button type="submit">Enviar</button>
+      <Btn type="submit">Enviar</Btn>
     </form>
   );
 };

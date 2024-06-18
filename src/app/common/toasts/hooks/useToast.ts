@@ -26,7 +26,7 @@ export const useToast = <T>() => {
     }, TOAST_TIMEOUT)
   }, [closeDialog]);
   
-  const getIcon = useCallback((type: string) => {
+  const getIcon = useCallback((type?: string) => {
     switch (type) {
       case TOAST_TYPES.SUCCESS:
         return "src/assets/svg/check-square-fill.svg";

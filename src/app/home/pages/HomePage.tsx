@@ -1,4 +1,6 @@
+import Btn from "@/app/common/components/Btn";
 import { useToastContext } from "@/app/common/toasts/contexts/ToastContext";
+import { TOAST_TYPES } from "@/app/common/toasts/models/enums/toasts-types";
 import HomeLayout from "@/app/home/layout/HomeLayout.tsx";
 import { Link } from "react-router-dom";
 
@@ -8,61 +10,61 @@ const HomePage = () => {
     <HomeLayout>
       <h1>Home Page</h1>
 
-      <button
+      <Btn
         type="button"
         onClick={() =>
           addToast({
             id: crypto.randomUUID(),
             title: "Título del toast",
             message: "mensaje del toast",
-            type: "info",
+            type: TOAST_TYPES.INFO,
           })
         }
       >
         InfoToast
-      </button>
+      </Btn>
 
-      <button
+      <Btn
         type="button"
         onClick={() =>
           addToast({
             id: crypto.randomUUID(),
             title: "Título del toast",
             message: "mensaje del toast",
-            type: "success",
+            type: TOAST_TYPES.SUCCESS,
           })
         }
       >
         SuccessToast
-      </button>
+      </Btn>
 
-      <button
+      <Btn
         type="button"
         onClick={() =>
           addToast({
             id: crypto.randomUUID(),
             title: "Título del toast",
             message: "mensaje del toast",
-            type: "warn",
+            type: TOAST_TYPES.WARN,
           })
         }
       >
         WarningToast
-      </button>
+      </Btn>
 
-      <button
+      <Btn
         type="button"
         onClick={() =>
           addToast({
             id: crypto.randomUUID(),
             title: "Título del toast",
             message: "mensaje del toast",
-            type: "error",
+            type: TOAST_TYPES.ERROR,
           })
         }
       >
         ErrorToast
-      </button>
+      </Btn>
 
       <Link to="/users">Entrar</Link>
     </HomeLayout>

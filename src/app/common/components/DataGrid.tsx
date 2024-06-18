@@ -1,4 +1,5 @@
 import { IIDentificable } from "@/app/core/interfaces/identificable";
+import Btn from "./Btn";
 import "./DataGrid.module.css";
 interface IHandlers {
   update?: (id?: number) => void;
@@ -30,15 +31,15 @@ const DataGrid = <T extends IIDentificable<number>>({
             ))}
             <td key={obj.id}>
               {handlers?.update && (
-                <button type="button" onClick={() => handlers.update?.(obj.id)}>
+                <Btn type="button" onClick={() => handlers.update?.(obj.id)}>
                   Actualizar
-                </button>
+                </Btn>
               )}
 
               {handlers?.delete && (
-                <button type="button" onClick={() => handlers.delete?.(obj.id)}>
+                <Btn type="button" onClick={() => handlers.delete?.(obj.id)}>
                   Eliminar
-                </button>
+                </Btn>
               )}
             </td>
           </tr>
